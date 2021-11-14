@@ -7,7 +7,7 @@ const ManageAllOrders = () => {
   document.title = "Manage All Trips";
   useEffect(() => {
     axios
-      .get("http://localhost:5000/allCars")
+      .get("https://hidden-eyrie-12216.herokuapp.com/allCars")
       .then((res) => setManageProducts(res.data));
   }, []);
 
@@ -16,14 +16,16 @@ const ManageAllOrders = () => {
     console.log(id);
     const proceed = window.confirm("Are you sure, you want to delete ?");
     if (proceed) {
-      axios.delete(`http://localhost:5000/allCars/${id}`).then((res) => {
-        if (res.data.deletedCount > 0) {
-          const remaining = manageProducts.filter(
-            (product) => product._id !== id
-          );
-          setManageProducts(remaining);
-        }
-      });
+      axios
+        .delete(`https://hidden-eyrie-12216.herokuapp.com/allCars/${id}`)
+        .then((res) => {
+          if (res.data.deletedCount > 0) {
+            const remaining = manageProducts.filter(
+              (product) => product._id !== id
+            );
+            setManageProducts(remaining);
+          }
+        });
     }
   };
 

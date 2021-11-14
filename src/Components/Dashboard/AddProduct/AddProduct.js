@@ -5,12 +5,14 @@ const AddProduct = () => {
   const { register, handleSubmit, reset } = useForm();
   document.title = "Add a Product";
   const onSubmit = (data) => {
-    axios.post("http://localhost:5000/addProduct", data).then((res) => {
-      if (res.data.insertedId) {
-        alert("Product added");
-        reset();
-      }
-    });
+    axios
+      .post("https://hidden-eyrie-12216.herokuapp.com/addProduct", data)
+      .then((res) => {
+        if (res.data.insertedId) {
+          alert("Product added");
+          reset();
+        }
+      });
   };
   return (
     <div

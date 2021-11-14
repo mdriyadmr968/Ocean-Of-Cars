@@ -8,7 +8,7 @@ const Explore = () => {
   const [cars, setCars] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:5000/allCars")
+      .get("https://hidden-eyrie-12216.herokuapp.com/allCars")
 
       .then((res) => setCars(res.data));
   }, []);

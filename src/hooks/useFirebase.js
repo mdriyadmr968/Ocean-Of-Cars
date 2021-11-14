@@ -76,7 +76,7 @@ const useFirebase = () => {
   };
   //fetching all the admins from the database
   useEffect(() => {
-    fetch(`http://localhost:5000/users/${user.email}`)
+    fetch(`https://hidden-eyrie-12216.herokuapp.com/users/${user.email}`)
       .then((res) => res.json())
       .then((data) => setAdmin(data.admin));
   }, [user.email]);
@@ -110,7 +110,7 @@ const useFirebase = () => {
   const saveUser = (email, displayName, method) => {
     const user = { email, displayName };
     console.log(`I am ${email}`);
-    fetch("http://localhost:5000/users", {
+    fetch("https://hidden-eyrie-12216.herokuapp.com/users", {
       method: method,
       headers: {
         "content-type": "application/json",

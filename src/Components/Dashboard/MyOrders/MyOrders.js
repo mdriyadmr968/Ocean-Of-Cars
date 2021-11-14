@@ -9,7 +9,7 @@ const MyOrders = () => {
   const email = user.email;
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/myOrders/${email}`)
+      .get(`https://hidden-eyrie-12216.herokuapp.com/myOrders/${email}`)
       .then((res) => setMyOrders(res.data));
   }, []);
 
@@ -18,12 +18,14 @@ const MyOrders = () => {
   const handleDelete = (id) => {
     const proceed = window.confirm("Are you sure, you want to delete ?");
     if (proceed) {
-      axios.delete(`http://localhost:5000/deleteCar/${id}`).then((res) => {
-        if (res.data.deletedCount > 0) {
-          const remaining = myOrders.filter((car) => car._id !== id);
-          setMyOrders(remaining);
-        }
-      });
+      axios
+        .delete(`https://hidden-eyrie-12216.herokuapp.com/deleteCar/${id}`)
+        .then((res) => {
+          if (res.data.deletedCount > 0) {
+            const remaining = myOrders.filter((car) => car._id !== id);
+            setMyOrders(remaining);
+          }
+        });
     }
   };
   if (!myOrders || myOrders.length === 0) {

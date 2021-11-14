@@ -13,7 +13,7 @@ const Purchase = () => {
   const newData = details.find((datas) => datas._id === carID);
   useEffect(() => {
     axios
-      .get("http://localhost:5000/allCars")
+      .get("https://hidden-eyrie-12216.herokuapp.com/allCars")
 
       .then((res) => setDetails(res.data));
   }, []);
@@ -23,13 +23,15 @@ const Purchase = () => {
   const onSubmit = (data) => {
     data.img = newData?.img;
     data.status = "Pending";
-    axios.post("http://localhost:5000/purchasedCars", data).then((res) => {
-      if (res.data.acknowledged) {
-        alert("Your Car has been Purchased successfully");
-        history.push("/");
-        reset();
-      }
-    });
+    axios
+      .post("https://hidden-eyrie-12216.herokuapp.com/purchasedCars", data)
+      .then((res) => {
+        if (res.data.acknowledged) {
+          alert("Your Car has been Purchased successfully");
+          history.push("/");
+          reset();
+        }
+      });
     console.log(data);
   };
 

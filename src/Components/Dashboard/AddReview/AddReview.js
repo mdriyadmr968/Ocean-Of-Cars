@@ -6,12 +6,14 @@ const AddReview = () => {
   document.title = "Add More Trips";
 
   const onSubmit = (data) => {
-    axios.post("http://localhost:5000/reviews", data).then((res) => {
-      if (res.data.insertedId) {
-        alert("Your Review has been  Added");
-        reset();
-      }
-    });
+    axios
+      .post("https://hidden-eyrie-12216.herokuapp.com/reviews", data)
+      .then((res) => {
+        if (res.data.insertedId) {
+          alert("Your Review has been  Added");
+          reset();
+        }
+      });
     console.log(data);
   };
   return (
